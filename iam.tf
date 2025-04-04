@@ -1,0 +1,74 @@
+# To create iam role for eks
+
+resource "aws_iam_role" "eks" {
+  name = "eks-cluster-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+}
+
+
+# To create iam role for worker nodes
+
+resource "aws_iam_role" "worker-node" {
+  name = "eks-worker-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+}
+
+
+# To attaching role policies
+
+# For eks cluster policy
+
+resource "aws_iam_role_policy_attachment" "eks" {
+  role       = aws_iam_role.eks.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+}
+
+
+# For worker node
+
+resource "aws_iam_role_policy_attachment" "worker-node-eks" {
+  role       = aws_iam_role.worker-node.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+}
+
+
+# For eks cni
+
+resource "aws_iam_role_policy_attachment" "worker-node-cni" {
+  role       = aws_iam_role.worker-node.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+}
+
+
+# For registry
+
+resource "aws_iam_role_policy_attachment" "worker-node-registry" {
+  role       = aws_iam_role.worker-node.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+}
