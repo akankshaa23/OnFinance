@@ -8,14 +8,27 @@ resource "aws_vpc" "OF-vpc" {
 }
 
 
-# To Create Public Subnets 
-
-resource "aws_subnet" "OF-subnets-public" {
-  vpc_id     = aws_vpc.OF-vpc.id
-  cidr_block = "10.10.1.0/24"
+# Subnet 1 - AZ 1
+resource "aws_subnet" "OF-subnet-1" {
+  vpc_id            = aws_vpc.OF-vpc.id
+  cidr_block        = "10.10.1.0/24"
+  availability_zone = data.aws_availability_zones.available.names[0]
+  map_public_ip_on_launch = true
 
   tags = {
-    Name = "OF-subnets-public"
+    Name = "OF-subnet-1"
+  }
+}
+
+# Subnet 2 - AZ 2
+resource "aws_subnet" "OF-subnet-2" {
+  vpc_id            = aws_vpc.OF-vpc.id
+  cidr_block        = "10.10.2.0/24"
+  availability_zone = data.aws_availability_zones.available.names[1]
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "OF-subnet-2"
   }
 }
 
@@ -24,7 +37,7 @@ resource "aws_subnet" "OF-subnets-public" {
 
 resource "aws_subnet" "OF-subnets-private" {
   vpc_id     = aws_vpc.OF-vpc.id
-  cidr_block = "10.10.2.0/24"
+  cidr_block = "10.10.3.0/24"
 
   tags = {
     Name = "OF-subnets-private"
