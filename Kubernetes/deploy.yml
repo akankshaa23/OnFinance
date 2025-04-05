@@ -19,6 +19,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
+          aws-access-key-id: AKIA6GBMHNU3CH5YVIMM
+          aws-secret-access-key: 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
           role-to-assume: arn:aws:iam::975050337590:role/CICD
           aws-region: ap-south-1
 
@@ -45,6 +47,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
+          aws-access-key-id: AKIA6GBMHNU3CH5YVIMM
+          aws-secret-access-key: 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
           role-to-assume: arn:aws:iam::975050337590:role/CICD
           aws-region: ap-south-1
 
