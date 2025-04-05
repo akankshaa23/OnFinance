@@ -1,5 +1,5 @@
 resource "aws_eks_cluster" "eks" {
-  name     = "OF-eks-cluster2"
+  name     = "OF-eks-cluster3"
   role_arn = aws_iam_role.eks.arn
 
   vpc_config {
@@ -17,7 +17,7 @@ resource "aws_eks_cluster" "eks" {
 
 resource "aws_eks_node_group" "node_group" {
   cluster_name    = aws_eks_cluster.eks.name
-  node_group_name = "OF-node-group2"
+  node_group_name = "OF-node-group3"
   node_role_arn   = aws_iam_role.worker-node.arn
   subnet_ids      = [
     aws_subnet.OF-subnet-1.id,
