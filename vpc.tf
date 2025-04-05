@@ -24,7 +24,7 @@ resource "aws_subnet" "OF-subnets-public" {
 
 resource "aws_subnet" "OF-subnets-private" {
   vpc_id     = aws_vpc.OF-vpc.id
-  cidr_block = "10.10.1.0/24"
+  cidr_block = "10.10.2.0/24"
 
   tags = {
     Name = "OF-subnets-private"
