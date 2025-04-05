@@ -57,8 +57,7 @@ jobs:
 
       - name: Configure kubectl
         run: |
-          echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
-          kubectl cluster-info
+          aws eks update-kubeconfig --name OF-eks-cluster --region ap-south-1
 
       - name: Deploy to EKS
         run: |
