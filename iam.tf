@@ -100,3 +100,4 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
   role       = aws_iam_role.eks.name
 }
 
+
