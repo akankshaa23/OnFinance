@@ -1,0 +1,12 @@
+- name: Terraform Init
+  run: terraform init
+
+- name: Terraform Plan
+  run: terraform plan
+
+- name: Terraform Apply
+  run: terraform apply -auto-approve
+  env:
+    AWS_ACCESS_KEY_ID: AKIA6GBMHNU3CH5YVIMM
+    AWS_SECRET_ACCESS_KEY: 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
+    AWS_REGION: ap-south-1
