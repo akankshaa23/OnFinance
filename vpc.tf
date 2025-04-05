@@ -76,7 +76,6 @@ resource "aws_route_table" "OF-rt" {
 
 resource "aws_route_table_association" "OF-rta-public" {
   subnet_id      = aws_subnet.OF-subnet-1.id
-  subnet_id      = aws_subnet.OF-subnet-2.id
   route_table_id = aws_route_table.OF-rt.id
 }
 
