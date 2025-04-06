@@ -12,6 +12,9 @@ Features
 
 Architecture
 
+![architecture](https://github.com/user-attachments/assets/446ef723-0994-45d8-9367-a0e7fbbc580b)
+
+
 - The solution is built on AWS with the following key components:
 - Amazon EKS for container orchestration
 - Amazon RDS (PostgreSQL) for relational data storage
@@ -46,5 +49,31 @@ Deployment Instructions
 - kubectl apply -f kubernetes/frontend/
 - kubectl apply -f kubernetes/service/
 
-3. Logging and Monitoring Setup
-- 
+3. Monitoring and Troubleshooting
+ - View Kubernetes logs:
+    - kubectl logs -n onfinance <pod-name>
+ - Check CloudWatch logs:
+    - Navigate to CloudWatch > Logs > Log groups
+    - Look for /aws/eks/<cluster-name>/application
+   
+
+![image](https://github.com/user-attachments/assets/3b3b15d6-f2ec-4b5e-a093-88f4a38eaa2b)
+
+![image](https://github.com/user-attachments/assets/acc770d0-a966-4afb-9d57-8ec551d448d3)
+
+![image](https://github.com/user-attachments/assets/aad25176-d25b-43e2-901c-f586345038f6)
+
+![image](https://github.com/user-attachments/assets/a7431c35-c3aa-41f6-b334-cf95a22fb076)
+
+![image](https://github.com/user-attachments/assets/8af84c70-1710-4fbc-a0d5-efea4637f7b9)
+
+![image](https://github.com/user-attachments/assets/aea105f9-10b4-4a53-9952-38464cbefd56)
+
+
+
+
+
+
+
+
+
